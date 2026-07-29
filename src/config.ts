@@ -114,6 +114,18 @@ export const work = {
       image: "images/projects/work-aksb.jpg",
       href: "https://zebwan.github.io/aksb-global/",
     },
+    {
+      n: "06", client: "Imagify", title: "Imagify", year: "2026",
+      caption: "A minimal visual-studio concept working across identity, image, and film.",
+      image: "images/projects/work-imagify.jpg",
+      href: "https://zebwan.github.io/imagify/",
+    },
+    {
+      n: "07", client: "TatzMy", title: "TatzMy Studio", year: "2026",
+      caption: "A custom tattoo studio concept in Kuala Lumpur — Bornean tribal, oriental, and fine-line work.",
+      image: "images/projects/work-tatzmy.jpg",
+      href: "https://zebwan.github.io/tatzmy/",
+    },
   ] as WorkItem[],
 }
 
