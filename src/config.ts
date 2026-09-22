@@ -66,14 +66,20 @@ export const mission = {
   ],
 }
 
+export type WorkKind = "live" | "concept"
+
 export interface WorkItem {
   n: string
+  kind: WorkKind
+  /** live: the client's name — concept: what kind of brand it is */
   client: string
   title: string
   year: string
   caption: string
   image: string
   href: string
+  /** the preview shot is a light-background site — needs a deeper scrim for legible text */
+  light?: boolean
 }
 
 export const work = {
@@ -81,50 +87,84 @@ export const work = {
   label: "Selected Work",
   titleLines: ["Selected", "Projects."],
   desc: "Each project shows how I approach design, structure, and development.",
-  sideMono: "Client + concept work",
+  sideMono: "Live client sites + design concepts",
+  groups: {
+    live: {
+      title: "Live Websites",
+      mono: "Built, launched, and running today",
+    },
+    concept: {
+      title: "Concepts",
+      mono: "Self-initiated design studies",
+    },
+  },
   allProjects: { label: "All Projects", mono: "GitHub — 30+ repositories", href: "https://github.com/zebwan" },
   items: [
     {
-      n: "01", client: "Motosaka", title: "Motosaka Detailing", year: "2026",
+      n: "01", kind: "live", client: "Motosaka", title: "Motosaka Detailing", year: "2026",
       caption: "An automotive detailing brand in Malaysia, given a bolder and more premium online presence from first concept to live website.",
       image: "images/projects/work-motosaka.jpg",
       href: "https://motosakadetailing.com",
     },
     {
-      n: "02", client: "Chup", title: "Chup Studio", year: "2026",
-      caption: "A fashion-house concept built around calm layouts, bold typography, and smooth motion.",
-      image: "images/projects/work-chup.jpg",
-      href: "https://zebwan.github.io/chup/",
+      n: "02", kind: "live", client: "9NERS", title: "9NERS Detailing Studio", year: "2026",
+      caption: "A car and bike detailing studio in Johor Bahru — full price list, gallery, and an online store, with booking handled over WhatsApp.",
+      image: "images/projects/work-9ners.jpg",
+      href: "https://9nersstudio.com",
     },
     {
-      n: "03", client: "Garis", title: "Garis Barber", year: "2026",
-      caption: "A warm, local-hearted website concept for a modern barbershop — clean cuts, local heart.",
-      image: "images/projects/work-garis.jpg",
-      href: "https://zebwan.github.io/garis/",
+      n: "03", kind: "live", client: "Nelfar Zulkifli", title: "Nelfar Zulkifli", year: "2026",
+      caption: "A personal site for a property and strata management professional in Johor Bahru, built around her projects and field experience.",
+      image: "images/projects/work-nelfar.jpg",
+      light: true,
+      href: "https://nelfarzulkifli.com",
     },
     {
-      n: "04", client: "Valehouse", title: "Valehouse Estates", year: "2025",
-      caption: "A calm, refined concept for a boutique real estate studio and its residences.",
-      image: "images/projects/work-valehouse.jpg",
-      href: "https://zebwan.github.io/valehouse-estates/",
-    },
-    {
-      n: "05", client: "AKSB", title: "AKSB Global", year: "2026",
+      n: "04", kind: "live", client: "AKSB Global", title: "AKSB Global", year: "2026",
       caption: "A multi-page corporate website for a highway maintenance and engineering company.",
       image: "images/projects/work-aksb.jpg",
-      href: "https://zebwan.github.io/aksb-global/",
+      href: "https://aksbglobal.com",
     },
     {
-      n: "06", client: "Imagify", title: "Imagify", year: "2026",
+      n: "05", kind: "concept", client: "Design portfolio", title: "Shazwan Folio", year: "2026",
+      caption: "A portfolio concept laid out like a design canvas — rulers, selection handles, and a cursor that inverts whatever it passes over.",
+      image: "images/projects/work-folio.jpg",
+      light: true,
+      href: "https://zebwan.github.io/shazwan-folio/",
+    },
+    {
+      n: "06", kind: "concept", client: "Visual studio", title: "Imagify", year: "2026",
       caption: "A minimal visual-studio concept working across identity, image, and film.",
       image: "images/projects/work-imagify.jpg",
+      light: true,
       href: "https://zebwan.github.io/imagify/",
     },
     {
-      n: "07", client: "TatzMy", title: "TatzMy Studio", year: "2026",
+      n: "07", kind: "concept", client: "Fashion house", title: "Chup Studio", year: "2026",
+      caption: "A fashion-house concept built around calm layouts, bold typography, and smooth motion.",
+      image: "images/projects/work-chup.jpg",
+      light: true,
+      href: "https://zebwan.github.io/chup/",
+    },
+    {
+      n: "08", kind: "concept", client: "Tattoo studio", title: "TatzMy Studio", year: "2026",
       caption: "A custom tattoo studio concept in Kuala Lumpur — Bornean tribal, oriental, and fine-line work.",
       image: "images/projects/work-tatzmy.jpg",
       href: "https://zebwan.github.io/tatzmy/",
+    },
+    {
+      n: "09", kind: "concept", client: "Residential development", title: "Seri Ampuan", year: "2026",
+      caption: "A low-rise residence concept in Penang, carried by long scroll transitions and full-bleed photography.",
+      image: "images/projects/work-seriampuan.jpg",
+      light: true,
+      href: "https://zebwan.github.io/seri-ampuan/",
+    },
+    {
+      n: "10", kind: "concept", client: "Bakery and kopi", title: "Tepung", year: "2026",
+      caption: "A neighbourhood bakery concept in Kuala Lumpur — warm type, a daily menu, and a shopfront that feels open.",
+      image: "images/projects/work-tepung.jpg",
+      light: true,
+      href: "https://zebwan.github.io/tepung/",
     },
   ] as WorkItem[],
 }
@@ -282,6 +322,6 @@ export const menu = {
   ],
   featured: [
     { label: "Motosaka Detailing", image: "images/projects/work-motosaka.jpg", href: "https://motosakadetailing.com" },
-    { label: "Chup Studio", image: "images/projects/work-chup.jpg", href: "https://zebwan.github.io/chup/" },
+    { label: "9NERS Detailing Studio", image: "images/projects/work-9ners.jpg", href: "https://9nersstudio.com" },
   ],
 }
