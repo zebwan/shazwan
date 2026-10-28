@@ -1,7 +1,7 @@
 # SHAZWAN© revamp — Hanza template rebuild
 
 Static HTML/CSS/JS clone of https://hanza-template.framer.website/ with mhdshazwn.com's colours and content.
-Built 26 Oct 2026. Not deployed.
+Built 26 Oct 2026. **Live on mhdshazwn.com since 28 Oct 2026** — this folder is the git repo for github.com/zebwan/shazwan (`_teardown/` and `build/qa/` are git-ignored, local only).
 
 ## Folders
 - `_teardown/` — the study: `TEARDOWN.md` (sections, responsive matrix, motion, tokens), template source
@@ -12,11 +12,12 @@ Built 26 Oct 2026. Not deployed.
 - `build/qa/` — `shot.py` (screenshot + overflow/error audit), `compare.py` (section heights vs template),
   `interact.py` (menu, accordions, filters, load more, form, hover, counters, ticker, scroll effects).
 
-## Pages (18)
-Home, Portfolio (+10 project pages), About, Pricing, Contact, Terms, Privacy, 404.
+## Pages
+Home, Portfolio (+10 project pages), About, Pricing, Contact, Privacy, 404 (Terms appears once its text is written).
 The blog (page, 8 posts and the home Blog section) was removed at your request; Pricing took its place in the menu and footer.
 
-## Placeholders to replace (search `PH(` in content.py)
+## Placeholders (search `PH(` in content.py)
+Placeholder text is LEFT OFF the built site automatically (case study section, project-page quote/story/approach/results, Terms page, placeholder privacy lines). Replace a `PH("...")` with real words and it appears on the next build.
 - Case study quote, two result numbers, client name
 - Project pages: client quote, story text, approach text, results, extra screenshots (only one image per project so far)
 - Terms of use; the rest of the privacy policy (the FormSubmit sentence is real)
@@ -26,7 +27,7 @@ Landing page RM 1,200 (2 weeks) · website up to 6 pages RM 2,400 (1–1.5 month
 
 ## Where it differs from Hanza (on purpose)
 - **Testimonials and Blog removed**, at your request. Home section numbers now run 01 Mission … 05 Case Study, 06 Pricing, 07 FAQ. Pricing has its own page (/pricing/) with the packages + FAQ.
-- **Portfolio page = two groups (Live Websites, Concepts) of two-column cards**, at your request; rows of two stack on scroll (one column on phones, where each card stacks). Group titles/descriptions are in `work["groups"]` in content.py.
+- **Portfolio page = one list of two-column cards in your chosen order** (live and concept mixed), at your request; rows of two stack on scroll (one column on phones, where each card stacks). Order = the `projects` list in content.py; home shows the first three.
 - **Project cards stack on scroll** on every page (home, portfolio, next project), at your request: each card sticks once it fills the screen, the next slides over it and the covered card eases back to 92%. On screens shorter than the card it sticks with its bottom edge on screen so the caption is never cut off. Hanza's cards simply scroll.
 - Hanza's seller badges ("More templates / Buy for $99", "Made in Framer") are left out — they are the template shop's ads.
 - Project panels built from light-background screenshots get a deeper scrim (62% instead of 20%) so the white text stays readable.
@@ -39,5 +40,5 @@ Landing page RM 1,200 (2 weeks) · website up to 6 pages RM 2,400 (1–1.5 month
 Posts to formsubmit.co/ajax/zebwan00@gmail.com (same as the live site). The very first submission sends an
 activation email that has to be clicked once.
 
-## Deploy (when ready)
-`site/` already has `CNAME` (mhdshazwn.com) and `.nojekyll`. It would replace the React build in zebwan/shazwan.
+## Publish
+Edit `build/content.py` → `python3 build/build.py` → commit → `git push`. The Pages workflow (`.github/workflows/deploy.yml`) publishes `site/`. The old React/Vite site is in the history at commit a3e3daa.
