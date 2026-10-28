@@ -1,4 +1,8 @@
+# local only: the template study (contains the Hanza template's own code) and QA screenshots
+_teardown/
+build/qa/
+__pycache__/
+.DS_Store
 node_modules
 dist
 .env
-.DS_Store
